@@ -1,0 +1,3 @@
+{
+    "text": ">============== <HEADER> =============\n>*Status:* <STATUS_EMOJI> <STATUS>\n>*App:* <<CI_REPOSITORY_URL>|<REPO_NAME>>\n>*Job:* <<CI_JOB_URL>|<JOB_NAME>>\n>*Branch:* <CI_COMMIT_REF_NAME>\n>*Commit:* <CI_COMMIT_SHORT_SHA>\n>*Commit Message:* <CI_COMMIT_DESCRIPTION>\n>*By:* <CI_COMMIT_AUTHOR>\n>*Project:* <GKE_PROJECT_ID>\n>*Cluster:* <GKE_CLUSTER_NAME>\n>*Namespace:* <DEPLOY_NAMESPACE>"
+}
