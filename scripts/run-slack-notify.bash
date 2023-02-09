@@ -79,6 +79,4 @@ else
     
     echo $(cat ${BQ_TEMPLATE}) > ${BQ_TEMPLATE_ND} # Convert to a single line JSON
     cat ${BQ_TEMPLATE_ND}
-
-    bq --location=asia-southeast1 load --autodetect --source_format=NEWLINE_DELIMITED_JSON cicd.cicd_job_stats ${BQ_TEMPLATE_ND}
 fi

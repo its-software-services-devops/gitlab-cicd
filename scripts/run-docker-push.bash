@@ -44,22 +44,5 @@ if [ $retVal -ne 0 ]; then
     exit 1
 fi
 
-###### Start cleanup unused docker image ####
-## To cleanup disk space
-#docker image rm ${PROJECT_IMAGE}:${DOCKER_TAG_LATEST}
-#retVal=$?
-#if [ $retVal -ne 0 ]; then
-#    run-slack-notify.bash "END" "ERROR" "build"
-#    exit 1
-#fi
-
-#docker image rm ${PROJECT_IMAGE}:${DOCKER_TAG}
-#retVal=$?
-#if [ $retVal -ne 0 ]; then
-#    run-slack-notify.bash "END" "ERROR" "build"
-#    exit 1
-#fi
-###### End cleanup unused docker image ####
-
 run-slack-notify.bash "END" "SUCCESS" "build"
 echo "SYSTEM_DOCKER_IMAGE_TAG=${DOCKER_TAG}" >> ${SYSTEM_STATE_FILE}
