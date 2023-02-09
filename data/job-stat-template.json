@@ -1,0 +1,18 @@
+{
+    "job_start_timestamp":"<JOB_START_DTM>",
+    "job_end_timestamp":"<JOB_END_DTM>",
+    "job_exec_duration_sec":"<JOB_DURASION_SEC>",
+    "job_status": "<STATUS>",
+    "job_phase": "<PHASE>",
+    "repository_url": "<CI_REPOSITORY_URL>",
+    "repository_name": "<REPO_NAME>",
+    "cicd_job_name": "job-<JOB_NAME>",
+    "cicd_job_url": "<CI_JOB_URL>",
+    "git_commit_ref_name": "<CI_COMMIT_REF_NAME>",
+    "git_commit_short_sha": "sha-<CI_COMMIT_SHORT_SHA>",
+    "git_commit_desc": "<CI_COMMIT_DESCRIPTION>",
+    "git_commit_author": "<CI_COMMIT_AUTHOR>",
+    "platform_project_id": "<GKE_PROJECT_ID>",
+    "platform_namespace": "<DEPLOY_NAMESPACE>",
+    "platform_cluster_name": "<GKE_CLUSTER_NAME>"
+}
