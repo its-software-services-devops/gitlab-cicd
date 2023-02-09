@@ -23,13 +23,7 @@ fi
 
 run-slack-notify.bash "BEGIN" "N/A" "build"
 
-#Pass ACCOUNT and TOKEN arguments for downloading NPM module from private GAR, 
-#no matter if we need it or not.
-SA_NAME="fake-id"
-SA_TOKEN="fake-token"
-DOCKER_ARGUMENTS="--build-arg ACCOUNT=${SA_NAME} --build-arg TOKEN=${SA_TOKEN}"
-
-docker build -t ${PROJECT_IMAGE}:${DOCKER_TAG} -t ${PROJECT_IMAGE}:${DOCKER_TAG_LATEST} ${DOCKER_ARGUMENTS} ${CONTEXT_PATH} ${DOCKER_FILE_PATH}
+docker build -t ${PROJECT_IMAGE}:${DOCKER_TAG} -t ${PROJECT_IMAGE}:${DOCKER_TAG_LATEST} ${CONTEXT_PATH} ${DOCKER_FILE_PATH}
 retVal=$?
 if [ $retVal -ne 0 ]; then
     run-slack-notify.bash "END" "ERROR" "build"
