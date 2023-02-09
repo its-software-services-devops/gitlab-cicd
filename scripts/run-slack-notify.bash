@@ -10,7 +10,7 @@ STATUS_EMOJI=""
 TMP_TEMPLATE=/tmp/template.json
 BQ_TEMPLATE=/tmp/bq_template.json
 BQ_TEMPLATE_ND=/tmp/bq_template_nd.json
-SLACK_URL=""
+SLACK_URL="${SLACK_NOTI_URL}"
 CI_COMMIT_DESCRIPTION=$(git log --format=%B -n 1 | head -1)
 JOB_NAME=$(basename ${CI_JOB_URL})
 REPO_NAME=$(basename ${CI_REPOSITORY_URL})
