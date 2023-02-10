@@ -3,6 +3,9 @@
 PROJECT_IMAGE=$1
 CONTEXT_PATH=$2
 
+# To preserve env variables, run dot script
+. create-ci-env.bash
+
 echo "#### show PROJECT_IMAGE ${1} of env1 ####"
 echo "#### show CONTEXT_PATH ${2} of env2 ####"
 echo "#### Running the ${0} script ####"
