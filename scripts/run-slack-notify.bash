@@ -10,7 +10,7 @@ STATUS_EMOJI=""
 TMP_TEMPLATE=/tmp/template.json
 BQ_TEMPLATE=/tmp/bq_template.json
 BQ_TEMPLATE_ND=/tmp/bq_template_nd.json
-SLACK_URL=""
+SLACK_URL="${SLACK_NOTI_URL}"
 CI_COMMIT_DESCRIPTION=$(git log --format=%B -n 1 | head -1)
 JOB_NAME=$(basename ${CI_JOB_URL})
 REPO_NAME=$(basename ${CI_REPOSITORY_URL})
@@ -79,6 +79,4 @@ else
     
     echo $(cat ${BQ_TEMPLATE}) > ${BQ_TEMPLATE_ND} # Convert to a single line JSON
     cat ${BQ_TEMPLATE_ND}
-
-    bq --location=asia-southeast1 load --autodetect --source_format=NEWLINE_DELIMITED_JSON cicd.cicd_job_stats ${BQ_TEMPLATE_ND}
 fi
