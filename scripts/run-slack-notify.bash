@@ -41,6 +41,7 @@ sed -i "s#<CI_COMMIT_AUTHOR>#${CI_COMMIT_AUTHOR}#g" ${TMP_TEMPLATE}
 sed -i "s#<GKE_PROJECT_ID>#${GKE_PROJECT_ID}#g" ${TMP_TEMPLATE}
 sed -i "s#<DEPLOY_NAMESPACE>#${DEPLOY_NAMESPACE}#g" ${TMP_TEMPLATE}
 sed -i "s#<GKE_CLUSTER_NAME>#${GKE_CLUSTER_NAME}#g" ${TMP_TEMPLATE}
+sed -i "s#<GITOPS_URI>#${GITOPS_URI}#g" ${TMP_TEMPLATE}
 
 curl -X POST -H 'Content-type: application/json' --data "@${TMP_TEMPLATE}" ${SLACK_URL}
 

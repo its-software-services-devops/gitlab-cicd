@@ -20,7 +20,8 @@ VALUE_FILE=${VALUE_FILE_DIR}/values-tags-${ARGOCD_BRANCH}.yaml
 
 # Variable SYSTEM_DOCKER_IMAGE_TAG is defined in SYSTEM_STATE_FILE
 IMAGE_TAG=${SYSTEM_DOCKER_IMAGE_TAG}
-
+export GITOPS_URI=${GIT_URI}
+export CI_COMMIT_REF_NAME=${ARGOCD_BRANCH}
 echo "Running using GIT_URI=[${GIT_URI}], IMAGE_TAG=[${IMAGE_TAG}]"
 
 run-slack-notify.bash "BEGIN" "N/A" "deploy"
