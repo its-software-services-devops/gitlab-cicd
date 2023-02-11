@@ -20,6 +20,8 @@ IMAGE_TAG=${SYSTEM_DOCKER_IMAGE_TAG}
 
 echo "Running using GIT_URI=[${GIT_URI}], IMAGE_TAG=[${IMAGE_TAG}]"
 
+run-slack-notify.bash "BEGIN" "N/A" "deploy"
+
 git config --global user.email "cicd-auto@mycomapny.com"
 git config --global user.name "CICD"
 
@@ -36,3 +38,5 @@ done
 ls -lrt
 cat ${VALUE_FILE}
 git add ${VALUE_FILE}; git commit --m "Update image tag by auto deploy script"; git push
+
+run-slack-notify.bash "END" "SUCCESS" "deploy"
