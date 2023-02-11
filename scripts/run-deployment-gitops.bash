@@ -5,6 +5,9 @@
 # Note : The GIT_URL_GITOPS env variable is set in the Gitlab UI (CICD section - Group DevOps)
 #set -x
 
+# To preserve env variables, run dot script
+. create-ci-env.bash
+
 # The SYSTEM_STATE_FILE is defined in Dockerfile, file populated from CI build
 set -o allexport; source "${SYSTEM_STATE_FILE}"; set +o allexport
 
