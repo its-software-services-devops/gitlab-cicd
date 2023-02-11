@@ -3,7 +3,7 @@
 # export GITOPS_TAG_VARIABLES="image-tag1,image-tag2"
 # run-deployment-gitops.bash development Devops/cicd/gitlab-runner-demo-deployment.git
 # Note : The GIT_URL_GITOPS env variable is set in the Gitlab UI (CICD section - Group DevOps)
-set -x
+#set -x
 
 # The SYSTEM_STATE_FILE is defined in Dockerfile, file populated from CI build
 set -o allexport; source "${SYSTEM_STATE_FILE}"; set +o allexport
@@ -15,8 +15,8 @@ GIT_URI=$2
 VALUE_FILE_DIR="manifests"
 VALUE_FILE=${VALUE_FILE_DIR}/values-tags-${ARGOCD_BRANCH}.yaml
 
-# Variable DOCKER_TAG is defined in SYSTEM_STATE_FILE
-IMAGE_TAG=${DOCKER_TAG}
+# Variable SYSTEM_DOCKER_IMAGE_TAG is defined in SYSTEM_STATE_FILE
+IMAGE_TAG=${SYSTEM_DOCKER_IMAGE_TAG}
 
 echo "Running using GIT_URI=[${GIT_URI}], IMAGE_TAG=[${IMAGE_TAG}]"
 
