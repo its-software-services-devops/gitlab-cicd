@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 #FROM amazon/aws-cli:2.10.3
 
-RUN apt-get -y install awscli
+RUN apt -y install awscli
 RUN aws --version
 
 RUN apt-get -y update
