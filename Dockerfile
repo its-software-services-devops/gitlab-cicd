@@ -1,4 +1,8 @@
 FROM ubuntu:22.04
+#FROM amazon/aws-cli:2.10.3
+
+RUN apt-get -y install awscli
+RUN aws --version
 
 RUN apt-get -y update
 RUN apt-get -y install git
@@ -9,13 +13,9 @@ RUN apt-get update && \
     apt-get install -qy curl && \
     curl -sSL https://get.docker.com/ | sh
 
-#FROM amazon/aws-cli:2.10.3
-
-#RUN aws --version
-
 
 RUN git --version
-RUN docker
+RUN docker --version
 
 COPY scripts/* /scripts/
 RUN chmod -R 555 /scripts/*
