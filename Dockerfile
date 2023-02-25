@@ -1,7 +1,7 @@
 FROM amazon/aws-cli:2.10.3
 
 RUN aws --version
-RUN git -v
+#RUN git -v
 RUN docker
 
 COPY scripts/* /scripts/
