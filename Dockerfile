@@ -8,8 +8,8 @@ RUN apt-get -y install git
 #RUN aws --version
 
 
-RUN git -v
-#RUN docker
+RUN git --version
+RUN docker
 
 COPY scripts/* /scripts/
 RUN chmod -R 555 /scripts/*
