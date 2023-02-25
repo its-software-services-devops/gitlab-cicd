@@ -1,8 +1,13 @@
 FROM amazon/aws-cli:2.10.3
 
 RUN aws --version
-#RUN git -v
-RUN docker
+
+
+RUN apk update
+RUN apk add git
+
+RUN git -v
+#RUN docker
 
 COPY scripts/* /scripts/
 RUN chmod -R 555 /scripts/*
