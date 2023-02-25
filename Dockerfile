@@ -1,10 +1,12 @@
-FROM amazon/aws-cli:2.10.3
+FROM ubuntu:22.04
 
-RUN aws --version
+RUN apt-get -y update
+RUN apt-get -y install git
 
+#FROM amazon/aws-cli:2.10.3
 
-RUN apk update
-RUN apk add git
+#RUN aws --version
+
 
 RUN git -v
 #RUN docker
