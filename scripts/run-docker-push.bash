@@ -27,7 +27,7 @@ fi
 run-slack-notify.bash "BEGIN" "N/A" "build"
 
 # Check from ENV var
-retVal = 0
+retVal=0
 if [ "${PROJECT_IMAGE_EXT}" != '' ]; then
     docker build -t ${PROJECT_IMAGE}:${DOCKER_TAG} -t ${PROJECT_IMAGE}:${DOCKER_TAG_LATEST} \
         -t ${PROJECT_IMAGE_EXT}:${DOCKER_TAG} -t ${PROJECT_IMAGE_EXT}:${DOCKER_TAG_LATEST} \
