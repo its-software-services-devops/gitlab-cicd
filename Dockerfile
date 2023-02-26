@@ -1,5 +1,4 @@
 FROM ubuntu:22.04
-#FROM amazon/aws-cli:2.10.3
 
 RUN apt-get -y update
 
@@ -15,7 +14,7 @@ RUN aws --version
 RUN curl -sSL https://get.docker.com/ | sh
 RUN docker --version
 
-
+#### Custom script here ####
 COPY scripts/* /scripts/
 RUN chmod -R 555 /scripts/*
 
