@@ -14,12 +14,15 @@ if [ "${CLOUD_TYPE}" = 'gcp' ]; then
     gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin ${GAR}
 elif [ "${CLOUD_TYPE}" = 'aws' ]; then
     # The CICD_* variables are defined in the GitLab/GitHub env setting
-
+    echo "DEBUG1 [${CICD_AWS_ACCESS_KEY}] [${CICD_AWS_SECRET_KEY}] [${CICD_AWS_REGION}] [${CICD_AWS_REGISTRY_HOST}]"
     aws configure set aws_access_key_id "${CICD_AWS_ACCESS_KEY}" --profile cicd-devops && \
+    echo "DEBUG2"
     aws configure set aws_secret_access_key "${CICD_AWS_SECRET_KEY}" --profile cicd-devops && \
+    echo "DEBUG3"
     aws configure set region "${CICD_AWS_REGION}"
-
+    echo "DEBUG4"
     aws ecr get-login-password --region ${CICD_AWS_REGION} | docker login --username AWS --password-stdin ${CICD_AWS_REGISTRY_HOST}
+    echo "DEBUG5"
 fi
 
 git config --global user.email "devops-cicd@abcdefg.com"
