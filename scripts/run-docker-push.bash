@@ -26,8 +26,18 @@ fi
 
 run-slack-notify.bash "BEGIN" "N/A" "build"
 
-docker build -t ${PROJECT_IMAGE}:${DOCKER_TAG} -t ${PROJECT_IMAGE}:${DOCKER_TAG_LATEST} ${CONTEXT_PATH} ${DOCKER_FILE_PATH}
-retVal=$?
+# Check from ENV var
+retVal = 0
+if [ "${PROJECT_IMAGE_EXT}" != '' ]; then
+    docker build -t ${PROJECT_IMAGE}:${DOCKER_TAG} -t ${PROJECT_IMAGE}:${DOCKER_TAG_LATEST} \
+        -t ${PROJECT_IMAGE_EXT}:${DOCKER_TAG} -t ${PROJECT_IMAGE_EXT}:${DOCKER_TAG_LATEST} \
+        ${CONTEXT_PATH} ${DOCKER_FILE_PATH}
+    retVal=$?
+else
+    docker build -t ${PROJECT_IMAGE}:${DOCKER_TAG} -t ${PROJECT_IMAGE}:${DOCKER_TAG_LATEST} ${CONTEXT_PATH} ${DOCKER_FILE_PATH}
+    retVal=$?
+fi
+
 if [ $retVal -ne 0 ]; then
     run-slack-notify.bash "END" "ERROR" "build"
     exit 1
@@ -45,6 +55,22 @@ retVal=$?
 if [ $retVal -ne 0 ]; then
     run-slack-notify.bash "END" "ERROR" "build"
     exit 1
+fi
+
+if [ "${PROJECT_IMAGE_EXT}" != '' ]; then
+    docker push ${PROJECT_IMAGE_EXT}:${DOCKER_TAG}
+    retVal=$?
+    if [ $retVal -ne 0 ]; then
+        run-slack-notify.bash "END" "ERROR" "build"
+        exit 1
+    fi
+
+    docker push ${PROJECT_IMAGE_EXT}:${DOCKER_TAG_LATEST}
+    retVal=$?
+    if [ $retVal -ne 0 ]; then
+        run-slack-notify.bash "END" "ERROR" "build"
+        exit 1
+    fi
 fi
 
 run-slack-notify.bash "END" "SUCCESS" "build"
