@@ -1,6 +1,6 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2 as installer
 
-RUN aws --version
+#RUN aws --version
 
 #### The 2nd image ####
 FROM ubuntu:22.04
