@@ -19,7 +19,7 @@ elif [ "${CLOUD_TYPE}" = 'aws' ]; then
     aws configure set aws_secret_access_key "${CICD_AWS_SECRET_KEY}" --profile cicd-devops && \
     aws configure set region "${CICD_AWS_REGION}"
 
-    aws ecr get-login-password --region ${CICD_AWS_REGION} | sudo docker login --username AWS --password-stdin ${CICD_AWS_REGISTRY_HOST}
+    aws ecr get-login-password --region ${CICD_AWS_REGION} | docker login --username AWS --password-stdin ${CICD_AWS_REGISTRY_HOST}
 fi
 
 git config --global user.email "devops-cicd@abcdefg.com"
